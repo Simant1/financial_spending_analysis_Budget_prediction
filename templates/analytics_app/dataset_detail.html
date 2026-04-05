@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-4">
+  <div>
+    <div class="text-uppercase text-muted small">Dataset Dashboard</div>
+    <h1 class="fw-bold mb-1">{{ dataset.name }}</h1>
+    <div class="text-muted">Rows processed: {{ dataset.rows_processed }} | Quality score: {{ quality.quality_score }}/100 | Filtered rows: {{ quality.filtered_count }}</div>
+  </div>
+  <div class="d-flex gap-2 flex-wrap">
+    <a href="{% url 'export_cleaned_csv' dataset.id %}" class="btn btn-outline-secondary">Export CSV</a>
+    <a href="{% url 'export_summary_pdf' dataset.id %}" class="btn btn-dark">Export PDF</a>
+    <a href="{% url 'meeting_script_view' %}" class="btn btn-outline-primary">Meeting Script</a>
+  </div>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+  <div class="card-body p-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+      <h4 class="fw-bold mb-0">Interactive Filters</h4>
+      <a href="{% url 'dataset_detail' dataset.id %}" class="btn btn-sm btn-outline-secondary">Reset</a>
+    </div>
+    <form method="get" class="row g-3">
+      <div class="col-md-3"><label class="form-label">Start date</label><input type="date" name="start_date" value="{{ filters.start_date }}" class="form-control"></div>
+      <div class="col-md-3"><label class="form-label">End date</label><input type="date" name="end_date" value="{{ filters.end_date }}" class="form-control"></div>
+      <div class="col-md-3"><label class="form-label">Category</label><select name="category" class="form-select"><option value="">All categories</option>{% for c in all_categories %}<option value="{{ c }}" {% if filters.category == c %}selected{% endif %}>{{ c }}</option>{% endfor %}</select></div>
+      <div class="col-md-3"><label class="form-label">Transaction type</label><select name="transaction_type" class="form-select"><option value="">All types</option><option value="Expense" {% if filters.transaction_type == 'Expense' %}selected{% endif %}>Expense</option><option value="Income" {% if filters.transaction_type == 'Income' %}selected{% endif %}>Income</option></select></div>
+      <div class="col-12"><button class="btn btn-primary">Apply Filters</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-3"><div class="metric-card primary"><div class="metric-label">Total Income</div><div class="metric-value">{{ summary.income_total }}</div></div></div>
+  <div class="col-md-3"><div class="metric-card danger"><div class="metric-label">Total Expense</div><div class="metric-value">{{ summary.expense_total }}</div></div></div>
+  <div class="col-md-3"><div class="metric-card success"><div class="metric-label">Net Balance</div><div class="metric-value">{{ summary.balance }}</div></div></div>
+  <div class="col-md-3"><div class="metric-card dark"><div class="metric-label">Forecast</div><div class="metric-value">{{ forecast.forecast|default:'-' }}</div></div></div>
+</div>
+
+<div class="row g-4 mb-4">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm rounded-4 h-100"><div class="card-body p-4"><div class="d-flex justify-content-between align-items-center mb-3"><h4 class="fw-bold mb-0">Monthly expense trend</h4><span class="badge text-bg-light">ARIMA enabled</span></div><canvas id="trendChart" height="110"></canvas></div></div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card border-0 shadow-sm rounded-4 h-100"><div class="card-body p-4"><h4 class="fw-bold">Automated insights</h4><div class="insight-list mt-3">{% for insight in insights %}<div class="insight-item">{{ insight }}</div>{% endfor %}</div></div></div>
+  </div>
+</div>
+
+<div class="row g-4 mb-4">
+  <div class="col-lg-5"><div class="card border-0 shadow-sm rounded-4 h-100"><div class="card-body p-4"><h4 class="fw-bold">Category spending distribution</h4><canvas id="categoryChart" height="220"></canvas></div></div></div>
+  <div class="col-lg-7"><div class="card border-0 shadow-sm rounded-4 h-100"><div class="card-body p-4"><h4 class="fw-bold">Model and quality summary</h4><div class="row g-3 mt-1"><div class="col-md-3"><div class="soft-box"><div class="soft-label">Top Category</div><div class="soft-value">{{ summary.top_category }}</div></div></div><div class="col-md-3"><div class="soft-box"><div class="soft-label">Anomalies</div><div class="soft-value">{{ summary.anomaly_count }}</div></div></div><div class="col-md-3"><div class="soft-box"><div class="soft-label">Avg Expense</div><div class="soft-value">{{ summary.avg_expense }}</div></div></div><div class="col-md-3"><div class="soft-box"><div class="soft-label">Savings Rate</div><div class="soft-value">{{ summary.savings_rate }}%</div></div></div><div class="col-md-4"><div class="soft-box"><div class="soft-label">Transactions</div><div class="soft-value">{{ summary.transaction_count }}</div></div></div><div class="col-md-4"><div class="soft-box"><div class="soft-label">MAE</div><div class="soft-value">{{ forecast.mae|default:'-' }}</div></div></div><div class="col-md-4"><div class="soft-box"><div class="soft-label">RMSE</div><div class="soft-value">{{ forecast.rmse|default:'-' }}</div></div></div></div><div class="note-box mt-3">{{ forecast.message }}</div></div></div></div>
+</div>
+
+<div class="row g-4 mb-4">
+  <div class="col-12"><div class="card border-0 shadow-sm rounded-4"><div class="card-body p-4"><div class="d-flex justify-content-between align-items-center mb-3"><h4 class="fw-bold mb-0">Actual vs Forecast Comparison</h4><span class="text-muted small">{{ comparison.coverage_note }}</span></div><canvas id="comparisonChart" height="110"></canvas></div></div></div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-6"><div class="card border-0 shadow-sm rounded-4 h-100"><div class="card-body p-4"><h4 class="fw-bold">Recent transactions</h4><div class="table-responsive mt-3"><table class="table align-middle"><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Type</th><th>Flag</th></tr></thead><tbody>{% for row in summary.recent_transactions %}<tr><td>{{ row.date|date:"Y-m-d" }}</td><td>{{ row.description }}</td><td>{{ row.category }}</td><td>{{ row.amount }}</td><td><span class="badge {% if row.transaction_type == 'Income' %}text-bg-success{% else %}text-bg-secondary{% endif %}">{{ row.transaction_type }}</span></td><td>{% if row.is_anomaly %}<span class="badge text-bg-danger">Anomaly</span>{% else %}<span class="badge text-bg-light">Normal</span>{% endif %}</td></tr>{% endfor %}</tbody></table></div></div></div></div>
+  <div class="col-lg-6"><div class="card border-0 shadow-sm rounded-4 h-100"><div class="card-body p-4"><h4 class="fw-bold">Detected anomalies</h4>{% if summary.anomalies %}<div class="table-responsive mt-3"><table class="table align-middle"><thead><tr><th>Date</th><th>Category</th><th>Amount</th></tr></thead><tbody>{% for row in summary.anomalies %}<tr><td>{{ row.date|date:"Y-m-d" }}</td><td>{{ row.category }}</td><td>{{ row.amount }}</td></tr>{% endfor %}</tbody></table></div>{% else %}<div class="empty-state mt-3">No anomalies were detected for the selected filters.</div>{% endif %}</div></div></div>
+</div>
+
+<script>
+const categoryLabels = {{ category_labels|safe }};
+const categoryValues = {{ category_values|safe }};
+const trendLabels = {{ trend_labels|safe }};
+const trendValues = {{ trend_values|safe }};
+const comparisonLabels = {{ comparison.labels|safe }};
+const comparisonActuals = {{ comparison.actuals|safe }};
+const comparisonPredictions = {{ comparison.predictions|safe }};
+
+new Chart(document.getElementById('categoryChart'), {type: 'doughnut', data: {labels: categoryLabels, datasets: [{label: 'Expense by Category', data: categoryValues}]}});
+new Chart(document.getElementById('trendChart'), {type: 'line', data: {labels: trendLabels, datasets: [{label: 'Monthly Expense', data: trendValues, tension: .35, fill: false}]}});
+new Chart(document.getElementById('comparisonChart'), {type: 'line', data: {labels: comparisonLabels, datasets: [{label: 'Actual Expense', data: comparisonActuals, tension: .35, fill: false}, {label: 'Predicted Expense', data: comparisonPredictions, tension: .35, fill: false}]}});
+</script>
+{% endblock %}

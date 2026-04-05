@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-lg rounded-4">
+      <div class="card-body p-5">
+        <div class="mb-4">
+          <h2 class="fw-bold">Upload financial dataset</h2>
+          <p class="text-muted mb-0">Supported formats: CSV and Excel. Required columns: date, description, category, amount, type.</p>
+        </div>
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.as_p }}<button class="btn btn-primary btn-lg">Upload and Analyze</button></form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

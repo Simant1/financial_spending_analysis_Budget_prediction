@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+  <div>
+    <div class="text-uppercase text-muted small">Presentation Support</div>
+    <h1 class="fw-bold mb-0">Supervisor Meeting Script</h1>
+  </div>
+  <a href="/static/docs/supervisor-meeting-script.md" class="btn btn-outline-primary" target="_blank">Open Markdown</a>
+</div>
+<div class="card border-0 shadow-sm rounded-4"><div class="card-body p-4">
+  <h4 class="fw-bold">What to say in the meeting</h4>
+  <ol class="meeting-list mt-3">
+    <li><strong>Project introduction:</strong> This system implements my dissertation proposal for financial spending analysis and budget prediction using uploaded CSV or Excel records.</li>
+    <li><strong>Problem statement:</strong> Existing personal finance tools often hide their analysis process, but this system makes cleaning, transformation, anomaly detection, and forecasting visible and explainable.</li>
+    <li><strong>Pipeline explanation:</strong> The data first goes through quality assessment, then cleaning, transformation, descriptive analytics, anomaly detection, and finally ARIMA forecasting.</li>
+    <li><strong>Research value:</strong> The system combines practical software engineering with analytical methods, so it is both a usable application and an evidence-based dissertation artefact.</li>
+    <li><strong>Technical justification:</strong> Django is used for the secure web platform, Pandas and NumPy for preprocessing, statistical z-score logic for anomaly detection, and ARIMA for time-series prediction.</li>
+    <li><strong>Demonstration plan:</strong> I will upload a sample dataset, show the cleaning and quality pipeline, demonstrate dashboard filters, open the forecast comparison chart, and export the summary report.</li>
+    <li><strong>Future work:</strong> The next stage is to add smarter model selection, user-specific budgeting recommendations, and more advanced forecasting benchmarks.</li>
+  </ol>
+</div></div>
+{% endblock %}

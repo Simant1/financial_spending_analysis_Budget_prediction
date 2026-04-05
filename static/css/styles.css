@@ -1,0 +1,24 @@
+body{font-family:Inter,system-ui,sans-serif;background:linear-gradient(180deg,#f4f7fb 0%,#eef2ff 100%);color:#14213d}
+.app-nav{background:linear-gradient(90deg,#0f172a,#1e293b);backdrop-filter:blur(12px)}
+.btn-glass{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#fff}
+.glass-panel{background:rgba(255,255,255,.08);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.15);border-radius:28px;box-shadow:0 20px 60px rgba(15,23,42,.2)}
+.hero-side{background:linear-gradient(135deg,#2563eb,#7c3aed);min-height:420px}
+.chip{display:inline-block;padding:.55rem .85rem;border-radius:999px;background:rgba(255,255,255,.15);color:#fff;font-size:.88rem}
+.min-vh-70{min-height:70vh}
+.hero-banner{background:linear-gradient(135deg,#0f172a,#2563eb);color:#fff;border-radius:28px;padding:2rem;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;box-shadow:0 16px 40px rgba(15,23,42,.18)}
+.feature-list li{margin-bottom:.8rem}
+.metric-card{border-radius:24px;padding:1.2rem 1.25rem;color:#fff;box-shadow:0 16px 40px rgba(0,0,0,.08)}
+.metric-card.primary{background:linear-gradient(135deg,#3b82f6,#2563eb)}
+.metric-card.danger{background:linear-gradient(135deg,#ef4444,#dc2626)}
+.metric-card.success{background:linear-gradient(135deg,#10b981,#059669)}
+.metric-card.dark{background:linear-gradient(135deg,#111827,#374151)}
+.metric-label{font-size:.9rem;opacity:.85}
+.metric-value{font-size:1.8rem;font-weight:800;margin-top:.2rem}
+.insight-list{display:grid;gap:.8rem}.insight-item{padding:1rem 1rem;border-radius:18px;background:#f8fafc;border:1px solid #e2e8f0}
+.soft-box{background:#f8fafc;border:1px solid #e5e7eb;border-radius:18px;padding:1rem;height:100%}
+.soft-label{font-size:.8rem;color:#64748b;text-transform:uppercase;letter-spacing:.04em}.soft-value{font-size:1.1rem;font-weight:700;margin-top:.35rem}
+.note-box{background:#eff6ff;border:1px solid #bfdbfe;padding:1rem;border-radius:18px;color:#1e3a8a}
+.empty-state{border:1px dashed #cbd5e1;border-radius:18px;padding:2rem;text-align:center;background:#f8fafc;color:#475569}
+.card{background:rgba(255,255,255,.88)}
+
+.form-control,.form-select{border-radius:14px;padding:.75rem .95rem;border:1px solid #dbe2ea}.form-label{font-weight:600;color:#334155}.meeting-list li{margin-bottom:1rem}.table thead th{font-size:.82rem;text-transform:uppercase;color:#64748b}.badge.text-bg-light{background:#f1f5f9!important;color:#334155!important}.card{background:rgba(255,255,255,.9)}

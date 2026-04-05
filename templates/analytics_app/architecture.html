@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+  <div>
+    <div class="text-uppercase text-muted small">System Design</div>
+    <h1 class="fw-bold mb-0">Dissertation Architecture Diagram</h1>
+  </div>
+  <a href="/static/docs/architecture-diagram.svg" class="btn btn-outline-primary" target="_blank">Open SVG</a>
+</div>
+<div class="card border-0 shadow-sm rounded-4 mb-4"><div class="card-body p-4 text-center"><img src="/static/docs/architecture-diagram.svg" class="img-fluid" alt="Architecture Diagram"></div></div>
+<div class="card border-0 shadow-sm rounded-4"><div class="card-body p-4"><h4 class="fw-bold">How to explain it</h4><p class="mb-2">The architecture is divided into a presentation layer, application logic layer, analytics engine, and reporting layer. The uploaded financial dataset first enters the preprocessing pipeline, then moves into descriptive analytics, anomaly detection, and ARIMA forecasting. The processed outputs are presented through the dashboard and export services.</p><p class="mb-0">This makes the system easy to justify academically because each research objective maps to a clearly separated software component.</p></div></div>
+{% endblock %}
