@@ -1,13 +1,12 @@
 # Financial Spending Analysis and Budget Prediction System - Dissertation Plus Edition
 
-This is an upgraded, more advanced Django implementation of your dissertation proposal. It is designed to look stronger in a supervisor meeting and to demonstrate more technical depth than a basic prototype.
+This project describes the development and design of a web-based system that enables individuals and SMEs to manage their finances by providing them with an analysis of their financial spending, along with budget forecasting capabilities. This project’s primary goal is to design and create a web-based financial management system designed to assist individuals and small/medium-sized businesses (SME) in managing their financial activities by providing them with an effective way to track, analyse and forecast their finances. This platform will support the upload of financial data in common file formats including CSV and Excel so users can access and integrate their existing financial records. Once the user’s financial data is uploaded to the platform, the financial management system will perform sophisticated analysis on that data which will enable users to classify their expenditures, analyse patterns of expenditure, and identify where companies are spending more than necessary or spending inequitably. A key part of this analysis is to identify, flag and make the user aware of potentially fraudulent or excessively large transactions which can alert them to potential financial risks or irregularity. This analysis will be displayed to the user via interactive dashboards and data visuals that provide an easy way for users to comprehend financial data and make informed decisions based on that data. The interactive dashboards will include various types of charts, trend analysis graphs, and aggregated summary statistics to give users a complete view of the company’s overall financial health and performance over time. Additionally, the financial management system will use Advanced Forecasting Techniques such as the ARIMA model as well as using historical financial data and forecasting accurate future expenditure patterns based on that data.
 
 ## New improvements in this edition
 - Professional dashboard styling
 - Date, category, and transaction-type filters
 - Forecast versus actual comparison chart
 - Architecture diagram page
-- Supervisor meeting script page
 - Data quality assessment module
 - Automated insights module
 - CSV and PDF export
@@ -53,4 +52,3 @@ python manage.py runserver
 - Anomaly table
 - PDF export
 - Architecture diagram
-- Meeting script
