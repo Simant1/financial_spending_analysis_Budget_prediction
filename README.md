@@ -1,13 +1,13 @@
 # Financial Spending Analysis and Budget Prediction System - Dissertation Plus Edition
 
-This is an upgraded, more advanced Django implementation of your dissertation proposal. It is designed to look stronger in a supervisor meeting and to demonstrate more technical depth than a basic prototype.
+The system integrates data analytics techniques with a practical software solution, combining Python-based data processing, time-series forecasting using ARIMA models, and a Django-based web application. The proposed system is intended for personal users and SMEs, providing category-wise expense analysis, detection of overspending behavior, I and short-term budget forecasts.
 
 ## New improvements in this edition
 - Professional dashboard styling
 - Date, category, and transaction-type filters
 - Forecast versus actual comparison chart
 - Architecture diagram page
-- Supervisor meeting script page
+-
 - Data quality assessment module
 - Automated insights module
 - CSV and PDF export
@@ -53,4 +53,4 @@ python manage.py runserver
 - Anomaly table
 - PDF export
 - Architecture diagram
-- Meeting script
+-

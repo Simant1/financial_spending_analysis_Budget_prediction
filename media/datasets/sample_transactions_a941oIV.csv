@@ -1,0 +1,21 @@
+date,description,category,amount,type
+2025-01-01,Salary payment,Salary,2000,Income
+2025-01-02,Rent January,Rent,700,Expense
+2025-01-03,Tesco groceries,Food,85.45,Expense
+2025-01-04,Bus pass,Transport,55,Expense
+2025-01-10,Netflix subscription,Entertainment,12.99,Expense
+2025-02-01,Salary payment,Salary,2000,Income
+2025-02-02,Rent February,Rent,700,Expense
+2025-02-03,Aldi groceries,Food,92.12,Expense
+2025-02-08,Electricity bill,Utilities,74.20,Expense
+2025-02-12,Uber trip,Transport,21.50,Expense
+2025-03-01,Salary payment,Salary,2000,Income
+2025-03-02,Rent March,Rent,700,Expense
+2025-03-03,Tesco groceries,Food,110.85,Expense
+2025-03-07,Gas bill,Utilities,65.00,Expense
+2025-03-15,Laptop repair,Misc,420.00,Expense
+2025-04-01,Salary payment,Salary,2000,Income
+2025-04-02,Rent April,Rent,700,Expense
+2025-04-04,Asda groceries,Food,96.55,Expense
+2025-04-09,Train ticket,Transport,48.50,Expense
+2025-04-15,Cinema,Entertainment,22,Expense
